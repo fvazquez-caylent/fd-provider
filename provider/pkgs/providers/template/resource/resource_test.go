@@ -3,7 +3,7 @@ package resource_test
 import (
 	"testing"
 
-	provider "github.com/AlphonsoCode/pulumi-provider-xyzqw/provider"
+	provider "github.com/fvazquez-caylent/fd-provider/provider"
 	"github.com/blang/semver"
 	integration "github.com/pulumi/pulumi-go-provider/integration"
 	presource "github.com/pulumi/pulumi/sdk/v3/go/common/resource"
@@ -11,9 +11,9 @@ import (
 )
 
 func TestResource(t *testing.T) {
-	server := integration.NewServer("xyzqw", semver.Version{Minor: 1}, provider.Provider())
+	server := integration.NewServer("fd-provider", semver.Version{Minor: 1}, provider.Provider())
 	integration.LifeCycleTest{
-		Resource: "xyzqw:index:Random",
+		Resource: "fd-provider:index:Random",
 		Create: integration.Operation{
 			Inputs: presource.NewPropertyMapFromMap(map[string]interface{}{
 				"length": 24,

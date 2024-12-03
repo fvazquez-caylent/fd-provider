@@ -1,7 +1,7 @@
 # Set these before running prepare
-PACK             := alph-aws
-PACK_CAMEL       := alphAws
-PROJECT          := github.com/AlphonsoCode/pulumi-provider-alph-aws
+PACK             := fd-provider
+PACK_CAMEL       := fdprovider
+PROJECT          := github.com/fvazquez-caylent/fd-provider
 
 # These usually don't need to be changed
 PACKDIR          := sdk

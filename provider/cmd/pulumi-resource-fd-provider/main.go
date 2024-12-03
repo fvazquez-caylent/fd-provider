@@ -17,8 +17,8 @@ package main
 import (
 	p "github.com/pulumi/pulumi-go-provider"
 
-	Xyzqw "github.com/AlphonsoCode/pulumi-provider-xyzqw/provider"
+	fdprovider "github.com/fvazquez-caylent/fd-provider/provider"
 )
 
 // Serve the provider against Pulumi's Provider protocol.
-func main() { p.RunProvider(Xyzqw.Name, Xyzqw.Version, Xyzqw.Provider()) }
+func main() { p.RunProvider(fdprovider.Name, fdprovider.Version, fdprovider.Provider()) }

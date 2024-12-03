@@ -5,7 +5,7 @@ before:
   hooks:
     - make gen
 builds:
-  - binary: pulumi-resource-xyzqw
+  - binary: pulumi-resource-fd-provider
     dir: provider
     env:
       - CGO_ENABLED=0
@@ -18,8 +18,8 @@ builds:
       - linux
     ldflags:
       # The line below MUST align with the module in current provider/go.mod
-      - -X github.com/your-org-name/pulumi-xyzqw/provider/Version={{.Tag }}
-    main: ./cmd/pulumi-resource-xyzqw/
+      - -X github.com/your-org-name/pulumi-fd-provider/provider/Version={{.Tag }}
+    main: ./cmd/pulumi-resource-fd-provider/
 changelog:
   skip: true
 release:

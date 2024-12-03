@@ -5,7 +5,7 @@ package component
 import (
 	"github.com/pkg/errors"
 
-	providerconfig "github.com/AlphonsoCode/pulumi-provider-xyzqw/provider/pkgs/core/providerconfig"
+	providerconfig "github.com/fvazquez-caylent/fd-provider/provider/pkgs/core/providerconfig"
 	"github.com/pulumi/pulumi-go-provider/infer"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )

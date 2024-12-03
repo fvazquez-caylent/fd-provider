@@ -1,0 +1,6 @@
+name: provider-fd-provider-native
+runtime: python
+plugins:
+  providers:
+    - name: fd-provider
+      path: ../../bin

@@ -1,0 +1,6 @@
+name: provider-fd-provider-native
+runtime: nodejs
+plugins:
+  providers:
+    - name: fd-provider
+      path: ../../bin

@@ -25,7 +25,7 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 
-	Xyzqw "github.com/AlphonsoCode/pulumi-provider-xyzqw/provider"
+	fdprovider "github.com/fvazquez-caylent/fd-provider/provider"
 )
 
 func TestRandomCreate(t *testing.T) {
@@ -52,5 +52,5 @@ func urn(typ string) resource.URN {
 
 // Create a test server.
 func provider() integration.Server {
-	return integration.NewServer(Xyzqw.Name, semver.MustParse("1.0.0"), Xyzqw.Provider())
+	return integration.NewServer(fdprovider.Name, semver.MustParse("1.0.0"), fdprovider.Provider())
 }

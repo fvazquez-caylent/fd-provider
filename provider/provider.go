@@ -17,9 +17,9 @@ package provider
 import (
 	"fmt"
 
-	"github.com/AlphonsoCode/pulumi-provider-xyzqw/provider/pkgs/core/metadata"
-	"github.com/AlphonsoCode/pulumi-provider-xyzqw/provider/pkgs/core/providerconfig"
-	"github.com/AlphonsoCode/pulumi-provider-xyzqw/provider/pkgs/core/registry"
+	"github.com/fvazquez-caylent/fd-provider/provider/pkgs/core/metadata"
+	"github.com/fvazquez-caylent/fd-provider/provider/pkgs/core/providerconfig"
+	"github.com/fvazquez-caylent/fd-provider/provider/pkgs/core/registry"
 	p "github.com/pulumi/pulumi-go-provider"
 	"github.com/pulumi/pulumi-go-provider/infer"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/tokens"
@@ -28,7 +28,7 @@ import (
 // Version is initialized by the Go linker to contain the semver of this build.
 var Version string
 
-const Name string = "xyzqw"
+const Name string = "fd-provider"
 
 func Provider() p.Provider {
 	inferOptions := infer.Options{

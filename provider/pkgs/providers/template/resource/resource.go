@@ -66,8 +66,8 @@ providerRegistryEntry{
 		PackageName:      "resource",
 		// index if the SDK root should expose this, the name of the scope otherwise.
 		// if scope is pqr, the import will be:
-		// import * as Xyzqw from @alphonsocode/pulumi-provider-xyzqw
-		// Xyzqw.pqr.Resource
+		// import * as fdprovider from @alphonsocode/pulumi-provider-fd-provider
+		// fdprovider.pqr.Resource
 		Scope:            "index",
 		Kind:             ProviderKindResource,
 		InferredResource: infer.Resource[resource.Resource, resource.Args, resource.State](),

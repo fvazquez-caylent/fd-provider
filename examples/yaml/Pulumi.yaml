@@ -1,17 +1,17 @@
-name: provider-xyzqw-native
+name: provider-fd-provider-native
 runtime: yaml
 plugins:
   providers:
-    - name: xyzqw
+    - name: fd-provider
       path: ../../bin
 
 resources:
   myRandomResource:
-    type: xyzqw:Random
+    type: fd-provider:Random
     properties:
       length: 24
   myRandomComponent:
-    type: xyzqw:RandomComponent
+    type: fd-provider:RandomComponent
     properties:
       length: 24
 

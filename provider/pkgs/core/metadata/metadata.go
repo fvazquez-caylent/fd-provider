@@ -7,7 +7,7 @@ import (
 	"github.com/pulumi/pulumi-go-provider/middleware/schema"
 )
 
-const PROVIDER_NAME = "xyzqw"
+const PROVIDER_NAME = "fd-provider"
 const DESCRIPTION = ""
 const README = ``
 

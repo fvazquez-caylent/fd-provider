@@ -1,3 +1,3 @@
-module github.com/AlphonsoCode/pulumi-provider-xyzqw/sdk
+module github.com/fvazquez-caylent/fd-provider/sdk
 
 go 1.21

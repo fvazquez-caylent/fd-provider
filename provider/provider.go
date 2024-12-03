@@ -15,6 +15,11 @@
 package provider
 
 import (
+	"fmt"
+
+	"github.com/AlphonsoCode/pulumi-provider-xyzqw/provider/pkgs/core/metadata"
+	"github.com/AlphonsoCode/pulumi-provider-xyzqw/provider/pkgs/core/providerconfig"
+	"github.com/AlphonsoCode/pulumi-provider-xyzqw/provider/pkgs/core/registry"
 	p "github.com/pulumi/pulumi-go-provider"
 	"github.com/pulumi/pulumi-go-provider/infer"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/tokens"
@@ -23,26 +28,41 @@ import (
 // Version is initialized by the Go linker to contain the semver of this build.
 var Version string
 
-const Name string = "xyz"
+const Name string = "xyzqw"
 
 func Provider() p.Provider {
-	// We tell the provider what resources it needs to support.
-	// In this case, a single resource and component
-	return infer.Provider(infer.Options{
-		Resources: []infer.InferredResource{
-			infer.Resource[Random, RandomArgs, RandomState](),
-		},
-		Components: []infer.InferredComponent{
-			infer.Component[*RandomComponent, RandomComponentArgs, *RandomComponentState](),
-		},
-		Config: infer.Config[Config](),
-		ModuleMap: map[tokens.ModuleName]tokens.ModuleName{
-			"provider": "index",
-		},
-	})
-}
+	inferOptions := infer.Options{
+		Resources:  []infer.InferredResource{},
+		Components: []infer.InferredComponent{},
+		Config:     infer.Config[providerconfig.Config](),
+		ModuleMap:  map[tokens.ModuleName]tokens.ModuleName{},
+		Functions:  []infer.InferredFunction{},
+		Metadata:   metadata.Metadata,
+	}
 
-// Define some provider-level configuration
-type Config struct {
-	Scream *bool `pulumi:"itsasecret,optional"`
+	for _, entry := range registry.Registry {
+		switch entry.Kind {
+		case registry.ProviderKindComponent:
+			{
+				inferOptions.Components = append(inferOptions.Components, entry.InferredComponent)
+			}
+		case registry.ProviderKindFunction:
+			{
+				inferOptions.Functions = append(inferOptions.Functions, entry.InferredFunction)
+			}
+		case registry.ProviderKindResource:
+			{
+				inferOptions.Resources = append(inferOptions.Resources, entry.InferredResource)
+			}
+		default:
+			{
+				panic(fmt.Errorf("error: unknown kind %s", entry.Kind))
+			}
+		}
+
+		if entry.PackageName != entry.Scope {
+			inferOptions.ModuleMap[tokens.ModuleName(entry.PackageName)] = tokens.ModuleName(entry.Scope)
+		}
+	}
+	return infer.Provider(inferOptions)
 }

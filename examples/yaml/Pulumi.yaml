@@ -1,17 +1,17 @@
-name: provider-xyz-native
+name: provider-xyzqw-native
 runtime: yaml
 plugins:
   providers:
-    - name: xyz
+    - name: xyzqw
       path: ../../bin
 
 resources:
   myRandomResource:
-    type: xyz:Random
+    type: xyzqw:Random
     properties:
       length: 24
   myRandomComponent:
-    type: xyz:RandomComponent
+    type: xyzqw:RandomComponent
     properties:
       length: 24
 

@@ -25,6 +25,10 @@ type S3Bucket struct {
     BucketArn  pulumi.StringOutput `pulumi:"bucketArn"`
 }
 
+func NewS3Bucket() interface{} {
+    return &S3Bucket{}
+}
+
 // Create es el método requerido para crear un recurso S3Bucket.
 func (S3Bucket) Create(ctx context.Context, name string, input S3BucketArgs, preview bool) (string, S3BucketState, error) {
     state := S3BucketState{S3BucketArgs: input}

@@ -43,8 +43,9 @@ func (S3Bucket) Create(ctx context.Context, name string, input S3BucketArgs, pre
     }
 
     // Se llena el estado con el ID y ARN del bucket.
-    state.BucketId = bucket.ID
-    state.BucketArn = bucket.Arn
+    state.BucketId = bucket.ID.ApplyT(func(id pulumi.String) string { return string(id) }).(string)
+    state.BucketArn = bucket.Arn.ApplyT(func(arn pulumi.String) string { return string(arn) }).(string)
+
 
     return name, state, nil
 }
@@ -63,8 +64,8 @@ func (S3Bucket) Update(ctx context.Context, name string, old S3BucketState, new 
         return state, errors.Wrap(err, "could not update S3 bucket")
     }
 
-    state.BucketId = bucket.ID
-    state.BucketArn = bucket.Arn
+    state.BucketId = bucket.ID.ApplyT(func(id pulumi.String) string { return string(id) }).(string)
+    state.BucketArn = bucket.Arn.ApplyT(func(arn pulumi.String) string { return string(arn) }).(string)
 
     return state, nil
 }

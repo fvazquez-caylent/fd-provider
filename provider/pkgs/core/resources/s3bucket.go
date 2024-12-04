@@ -77,8 +77,12 @@ func createS3Bucket(ctx context.Context, args S3BucketArgs) (*S3BucketState, err
 }
 
 // Lógica para actualizar un bucket en S3.
+// Lógica para actualizar un bucket en S3.
 func updateS3Bucket(ctx context.Context, args S3BucketArgs) (*S3BucketState, error) {
     // Aquí se usaría la API de Pulumi para actualizar el recurso S3 en AWS.
     // Devuelves valores como salidas usando pulumi.String().
-    return &S3Bu
+    return &S3BucketState{
+        BucketId:  pulumi.String("mock-bucket-id-updated").ToStringOutput(),  // Usar ToStringOutput
+        BucketArn: pulumi.String("mock-bucket-arn-updated").ToStringOutput(), // Usar ToStringOutput
+    }, nil
 }

@@ -23,7 +23,7 @@ import (
 	p "github.com/pulumi/pulumi-go-provider"
 	"github.com/pulumi/pulumi-go-provider/infer"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/tokens"
-	"github.com/fvazquez-caylent/fd-provider/provider/pkgs/resources"
+	"github.com/fvazquez-caylent/fd-provider/provider/pkgs/core/resources"
 )
 
 // Version is initialized by the Go linker to contain the semver of this build.
@@ -44,8 +44,9 @@ func Provider() p.Provider {
 	// Register S3 resource
 	inferOptions.Resources = append(inferOptions.Resources, infer.InferredResource{
 		Name:    "s3.Bucket",
-		Factory: resources.NewS3Bucket,  // Use defined function NewS3Bucket 
-	}) 
+		Factory: resources.NewS3Bucket,
+	})
+	
 
 	for _, entry := range registry.Registry {
 		switch entry.Kind {

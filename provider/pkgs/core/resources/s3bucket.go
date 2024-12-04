@@ -1,23 +1,21 @@
 package resources
 
 import (
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi-go-provider/infer"
 )
 
+// S3Bucket representa un recurso S3 en el sistema de inferencia.
 type S3Bucket struct {
-	pulumi.CustomResourceState
-
-	Name pulumi.StringOutput `pulumi:"name"`
+	Name string `pulumi:"name"`
 }
 
-func NewS3Bucket(ctx *pulumi.Context, name string, args *S3BucketArgs, opts ...pulumi.ResourceOption) (*S3Bucket, error) {
-	bucket, err := pulumi.NewCustomResource(ctx, name, &S3BucketArgs{}, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return bucket, nil
-}
-
+// S3BucketArgs contiene los argumentos necesarios para crear un S3Bucket.
 type S3BucketArgs struct {
-	Name pulumi.StringInput `pulumi:"name"`
+	Name string `pulumi:"name"`
 }
+
+// NewS3Bucket es la fábrica del recurso S3Bucket compatible con infer.
+func NewS3Bucket() infer.InferredResource {
+	return infer.Resource[S3Bucket, S3BucketArgs]()
+}
+

@@ -40,6 +40,12 @@ func Provider() p.Provider {
 		Metadata:   metadata.Metadata,
 	}
 
+	// Register S3 resource
+	inferOptions.Resources = append(inferOptions.Resources, infer.InferredResource{
+		Name:    "s3.Bucket",
+		Factory: resources.NewS3Bucket,  // Use defined function NewS3Bucket 
+	}) 
+
 	for _, entry := range registry.Registry {
 		switch entry.Kind {
 		case registry.ProviderKindComponent:

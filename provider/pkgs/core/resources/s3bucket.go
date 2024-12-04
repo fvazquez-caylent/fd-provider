@@ -8,14 +8,14 @@ import (
 
 // S3BucketArgs define los parámetros de entrada para la creación de un S3Bucket.
 type S3BucketArgs struct {
-    Name pulumi.StringInput `pulumi:"name"` // Cambiado a StringInput
+    Name pulumi.StringInput `pulumi:"name"`
 }
 
 // S3BucketState es el estado de un recurso S3Bucket creado.
 type S3BucketState struct {
     S3BucketArgs
-    BucketId   pulumi.StringOutput `pulumi:"bucketId"`   // Usar StringOutput
-    BucketArn  pulumi.StringOutput `pulumi:"bucketArn"`  // Usar StringOutput
+    BucketId   pulumi.StringOutput `pulumi:"bucketId"`
+    BucketArn  pulumi.StringOutput `pulumi:"bucketArn"`
 }
 
 // S3Bucket es la estructura que representa el recurso de un bucket en S3.
@@ -69,19 +69,15 @@ func (S3Bucket) Update(ctx context.Context, name string, old S3BucketState, new 
 // Lógica para crear un bucket en S3.
 func createS3Bucket(ctx context.Context, args S3BucketArgs) (*S3BucketState, error) {
     // Aquí se usaría la API de Pulumi para crear el recurso S3 en AWS.
-    // Esto podría implicar la llamada a una función como `aws.s3.Bucket`.
+    // Devuelves valores como salidas usando pulumi.String().
     return &S3BucketState{
-        BucketId:  pulumi.String("mock-bucket-id"),
-        BucketArn: pulumi.String("mock-bucket-arn"),
+        BucketId:  pulumi.String("mock-bucket-id").ToStringOutput(),  // Usar ToStringOutput
+        BucketArn: pulumi.String("mock-bucket-arn").ToStringOutput(), // Usar ToStringOutput
     }, nil
 }
 
 // Lógica para actualizar un bucket en S3.
 func updateS3Bucket(ctx context.Context, args S3BucketArgs) (*S3BucketState, error) {
     // Aquí se usaría la API de Pulumi para actualizar el recurso S3 en AWS.
-    // Esto podría implicar la llamada a una función como `aws.s3.Bucket`.
-    return &S3BucketState{
-        BucketId:  pulumi.String("mock-bucket-id-updated"),
-        BucketArn: pulumi.String("mock-bucket-arn-updated"),
-    }, nil
-}
+    // Devuelves valores como salidas usando pulumi.String().
+    return &S3Bu

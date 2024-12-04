@@ -1,4 +1,4 @@
-module github.com/fvazquez-caylent/fd-provider/provider
+module github.com/fvazquez-caylent/fd-provider
 
 go 1.22
 
@@ -11,6 +11,8 @@ require (
 	github.com/pulumi/pulumi/pkg/v3 v3.134.0
 	github.com/pulumi/pulumi/sdk/v3 v3.134.1
 	github.com/stretchr/testify v1.9.0
+	github.com/pulumi/pulumi-go-provider v0.1.1
+	github.com/pkg/errors v0.9.1
 )
 
 require (

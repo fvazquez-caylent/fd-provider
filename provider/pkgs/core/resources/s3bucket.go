@@ -81,3 +81,4 @@ func updateS3Bucket(ctx context.Context, args S3BucketArgs) (*S3BucketState, err
     // Aquí se usaría la API de Pulumi para actualizar el recurso S3 en AWS.
     // Devuelves valores como salidas usando pulumi.String().
     return &S3Bu
+}

@@ -44,7 +44,7 @@ func Provider() p.Provider {
 	// Register S3 resource
 	inferOptions.Resources = append(inferOptions.Resources, infer.InferredResource{
 		Name:    "s3.Bucket",
-		Factory: resources.NewS3Bucket,  // Usa la función que define el recurso
+		Factory: resources.S3Bucket,  // Usa la función que define el recurso
 	})
 	
 

@@ -8,7 +8,13 @@ import (
 )
 
 // S3Bucket es la estructura que representa el recurso de un bucket en S3.
-type S3Bucket struct{}
+type S3Bucket struct {
+	pulumi.CustomResourceState
+
+	Name pulumi.StringOutput `pulumi:"name"`
+	ID   pulumi.StringOutput `pulumi:"id"`   // El ID se obtiene automáticamente
+	Arn  pulumi.StringOutput `pulumi:"arn"`  // El Arn se obtiene automáticamente
+}
 
 // S3BucketArgs define los parámetros de entrada para la creación de un S3Bucket.
 type S3BucketArgs struct {
